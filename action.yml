@@ -1,10 +1,10 @@
 name: 'slack-send'
 description: 'Publish a message in a channel or send a JSON payload to the Slack Workflow Builder'
 inputs:
-  channel-id: # channel id to post message when using bot token
+  channel-id: C0647FQ42N6 # channel id to post message when using bot token
     description: 'Slack channel ID where message will be posted. Needed if using bot token'
-    required: false
-  slack-message: # message to post when using bot token
+    required: true
+  slack-message: Status. # message to post when using bot token
     description: 'Message to post into Slack. Needed if using bot token'
     required: false
   payload: # JSON payload to send to Slack via webhook
@@ -23,7 +23,7 @@ outputs:
     description: 'The timestamp on the message that was posted into Slack when using bot token'
   ts: # timestamp of message posted
     description: 'The timestamp on the message that was posted into Slack when using bot token'
-  channel_id: # Id of the channel. If channel name was used as input we can get ID from output for later use when updating message or posting to thread.
+  channel_id: C0647FQ42N6 # Id of the channel. If channel name was used as input we can get ID from output for later use when updating message or posting to thread.
     description: 'The channel id of the message that was posted into Slack when using bot token'
 runs:
   using: 'node16'
