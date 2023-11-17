@@ -121,29 +121,3 @@ jobs:
     # Use the output from the `slackIncoming` step
     - name: Check Action output is not empty
       run: test -n "${{ steps.slackPayloadFile.outputs.time }}"
-
-    # Every thing from here below is what I added from sample 
-  post_to_slack:  
-    runs-on: self-hosted
-    steps:
-    - name: Send custom JSON data to Slack workflow
-      id: slack
-      uses: slackapi/slack-github-action@v1.24.0
-      with:
-      # For posting a rich message using Block Kit
-      payload: |
-        {
-          "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-          "blocks": [
-            {
-              "type": "section",
-              "text": {
-                "type": "mrkdwn",
-                "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-              }
-            }
-          ]
-        }
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
