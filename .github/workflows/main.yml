@@ -7,14 +7,14 @@ on:
 
 jobs:
   unit_tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: npm ci && npm run build
     - run: npm test
 
   integration_test_botToken:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: npm ci && npm run build
@@ -27,7 +27,7 @@ jobs:
         # payload: "{\"key\":\"value\",\"foo\":\"bar\"}"
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        
+
     # Use the output from the `slackToken` step
     - name: Check Action output is not empty
       run: test -n "${{ steps.slackToken.outputs.time }}"
@@ -46,7 +46,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
   integration_test_webhook:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: npm ci && npm run build
@@ -79,7 +79,7 @@ jobs:
       run: test -n "${{ steps.slackWorkflow.outputs.time }}"
 
   integration_test_incoming_webhook:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: npm ci && npm run build
@@ -99,7 +99,7 @@ jobs:
       run: test -n "${{ steps.slackIncoming.outputs.time }}"
 
   integration_test_file_payload:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - run: npm ci && npm run build
